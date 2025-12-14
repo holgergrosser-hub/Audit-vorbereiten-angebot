@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audit-Vorbereitung Angebot - QM-Guru</title>
+    <title>Audit-Vorbereitung | QM-Guru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,80 +15,163 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1E3A5F 0%, #2C5282 100%);
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 50%, #1e3a5f 100%);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            background: rgba(30, 58, 95, 0.95);
-            color: white;
             padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-
-        header p {
-            font-size: 16px;
-            opacity: 0.9;
         }
 
         .container {
             max-width: 600px;
-            width: 100%;
-            margin: 40px auto;
-            padding: 40px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
         }
 
-        form {
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .header-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.6;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             gap: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #e8f4f8;
+            flex-shrink: 0;
+        }
+
+        .profile-info h2 {
+            font-size: 22px;
+            color: #1e3a5f;
+            margin-bottom: 5px;
+        }
+
+        .profile-info p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            background: #e8f4f8;
+            color: #0369a1;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .badge::before {
+            content: "✓ ";
+            color: #16a34a;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
         .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #1e3a5f;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group label .required {
+            color: #dc2626;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-group .hint {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 6px;
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 15px;
         }
 
-        label {
-            font-weight: 600;
-            color: #1E3A5F;
-            font-size: 14px;
-        }
-
-        input, select, textarea {
-            padding: 12px 16px;
-            border: 2px solid #E2E8F0;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #F6AD55;
-            box-shadow: 0 0 0 3px rgba(246, 173, 85, 0.1);
+        @media (max-width: 500px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
 
         textarea {
@@ -93,230 +179,242 @@
             min-height: 100px;
         }
 
-        .message {
-            padding: 16px;
-            border-radius: 8px;
+        /* Price Info Box */
+        .price-info {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0284c7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
             text-align: center;
-            font-weight: 500;
-            display: none;
         }
 
-        .message.success {
-            background: rgba(72, 187, 120, 0.1);
-            color: #22543d;
-            border: 1px solid rgba(72, 187, 120, 0.3);
+        .price-info .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0369a1;
+            margin-bottom: 5px;
         }
 
-        .message.error {
-            background: rgba(229, 62, 62, 0.1);
-            color: #742a2a;
-            border: 1px solid rgba(229, 62, 62, 0.3);
+        .price-info .detail {
+            font-size: 14px;
+            color: #0c4a6e;
         }
 
-        .message.show {
-            display: block;
-        }
-
-        button {
-            padding: 14px 32px;
-            background: #F6AD55;
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
             border: none;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: inherit;
         }
 
-        button:hover:not(:disabled) {
-            background: #ED8936;
+        .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(237, 137, 54, 0.3);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
         }
 
-        button:disabled {
-            opacity: 0.6;
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
             cursor: not-allowed;
+            transform: none;
         }
 
-        .form-note {
-            font-size: 12px;
-            color: #718096;
-            text-align: center;
-            margin-top: 8px;
-        }
-
-        footer {
-            background: #1E3A5F;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        footer p {
-            margin: 8px 0;
-            font-size: 14px;
-        }
-
-        .features {
-            background: white;
-            padding: 60px 20px;
-            margin: 40px 0;
-        }
-
-        .features h2 {
-            text-align: center;
-            color: #1E3A5F;
-            margin-bottom: 40px;
-            font-size: 28px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            padding: 20px;
-            background: #F7FAFC;
+        /* Message */
+        .message {
+            padding: 15px;
             border-radius: 8px;
-            border-left: 4px solid #F6AD55;
-        }
-
-        .feature-card h3 {
-            color: #1E3A5F;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .feature-card p {
-            color: #718096;
+            margin-bottom: 20px;
+            display: none;
             font-size: 14px;
+            text-align: center;
         }
 
-        @media (max-width: 600px) {
-            header h1 {
+        .message.show {
+            display: block;
+        }
+
+        .message.success {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+
+        .message.error {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        /* Footer Text */
+        .footer-text {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: white;
+        }
+
+        .footer h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 500px) {
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .badges {
+                justify-content: center;
+            }
+
+            .header h1 {
                 font-size: 24px;
             }
 
-            .container {
-                margin: 20px auto;
-                padding: 20px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
+            body {
+                padding: 20px 15px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>📋 Audit-Vorbereitung</h1>
-        <p>Automatisiertes Angebotssystem für ISO 9001</p>
-    </header>
+    <!-- Header -->
+    <div class="container">
+        <div class="header">
+            <div class="header-icon">📋</div>
+            <h1>Audit-Vorbereitung zur ISO 9001 Zertifizierung</h1>
+            <p>Wir bereiten Sie auf das jährliche Audit durch den Zertifizierer vor. Angebot kommt sofort per E-Mail als PDF.</p>
+        </div>
 
-    <section class="features">
-        <h2>Was ist im Angebot?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>📋 Nachweise vorbereiten</h3>
-                <p>Alle Dokumente und Checklisten erstellen</p>
-            </div>
-            <div class="feature-card">
-                <h3>🔍 Internes Audit</h3>
-                <p>Vorbereitung und Durchführung</p>
-            </div>
-            <div class="feature-card">
-                <h3>📄 QM-Handbuch</h3>
-                <p>Optimierung und Anpassung</p>
-            </div>
-            <div class="feature-card">
-                <h3>✔️ Management Review</h3>
-                <p>Vorbereitung der Managementbewertung</p>
-            </div>
-            <div class="feature-card">
-                <h3>🤝 Audit-Support</h3>
-                <p>Unterstützung während des Audits</p>
-            </div>
-            <div class="feature-card">
-                <h3>💬 Beratung</h3>
-                <p>Weitere Aufgaben nach Abstimmung</p>
+        <!-- Profile Card -->
+        <div class="profile-card">
+            <img src="https://qm-guru.link/wp-content/uploads/2024/01/Holger-Grosser-QM-Guru.jpg" 
+                 alt="Holger Großer" 
+                 class="profile-image"
+                 onerror="this.src='https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&s=200'">
+            <div class="profile-info">
+                <h2>Holger Großer</h2>
+                <p>Ihr Ansprechpartner für QM & Audit-Vorbereitung</p>
+                <div class="badges">
+                    <span class="badge">30+ Jahre Erfahrung</span>
+                    <span class="badge">1.000+ Audits</span>
+                    <span class="badge">Seit 1994</span>
+                </div>
             </div>
         </div>
-    </section>
 
-    <div class="container">
-        <h2 style="color: #1E3A5F; margin-bottom: 30px; text-align: center;">Angebot anfordern</h2>
-        
-        <form id="angebotForm">
-            <div class="form-group">
-                <label for="unternehmensname">Unternehmensname *</label>
-                <input type="text" id="unternehmensname" name="unternehmensname" placeholder="Ihre Firma GmbH" required>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="ansprechpartner">Ansprechpartner *</label>
-                    <input type="text" id="ansprechpartner" name="ansprechpartner" placeholder="Max Mustermann" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" placeholder="max@firma.de" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="telefon">Telefon</label>
-                    <input type="tel" id="telefon" name="telefon" placeholder="0911-123456">
-                </div>
-
-               
-          
-
-            <div class="form-group">
-                <label for="projektleiterId">Projektleiter (optional)</label>
-                <select id="projektleiterId" name="projektleiterId">
-                    <option value="">-- Wählen --</option>
-                    <option value="nina.schroeder">Nina Schröder</option>
-                    <option value="holger.grosser">Holger Großer</option>
-                    <option value="stephan.schroeder">Stephan Schröder</option>
-                    <option value="nina.benyagoub">Nina Benyagoub</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="nachricht">Besondere Anforderungen</label>
-                <textarea id="nachricht" name="nachricht" placeholder="Hier können Sie spezielle Anforderungen mitteilen..."></textarea>
-            </div>
-
+        <!-- Form Card -->
+        <div class="form-card">
             <div id="message" class="message"></div>
 
-            <button type="submit" id="submitBtn">Angebot anfordern</button>
+            <form id="angebotForm">
+                <div class="form-group">
+                    <label for="unternehmensname">Unternehmensname <span class="required">*</span></label>
+                    <input type="text" id="unternehmensname" name="unternehmensname" 
+                           placeholder="z.B. ABC Consulting GmbH" required>
+                </div>
 
-            <p class="form-note">
-                Mit dem Absenden erhalten Sie unverbindlich ein personalisiertes Angebot.
-            </p>
-        </form>
+                <div class="form-group">
+                    <label for="ansprechpartner">Ansprechpartner <span class="required">*</span></label>
+                    <input type="text" id="ansprechpartner" name="ansprechpartner" 
+                           placeholder="z.B. Max Mustermann" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-Mail-Adresse <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" 
+                           placeholder="max.mustermann@example.com" required>
+                    <div class="hint">Hier wird Ihnen das Angebot als PDF zugesendet</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefon">Telefon (optional)</label>
+                        <input type="tel" id="telefon" name="telefon" 
+                               placeholder="z.B. 0911-49522541">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projektleiterId">Projektleiter</label>
+                        <select id="projektleiterId" name="projektleiterId">
+                            <option value="">-- Wählen --</option>
+                            <option value="nina.schroeder">Nina Schröder</option>
+                            <option value="holger.grosser">Holger Großer</option>
+                            <option value="stephan.schroeder">Stephan Schröder</option>
+                            <option value="nina.benyagoub">Nina Benyagoub</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nachricht">Nachricht / Fragen (optional)</label>
+                    <textarea id="nachricht" name="nachricht" 
+                              placeholder="Hier können Sie uns weitere Informationen mitteilen..."></textarea>
+                </div>
+
+                <!-- Price Info -->
+                <div class="price-info">
+                    <div class="price">💰 ca. 6-12 Std. à 135€ zzgl. MwSt</div>
+                    <div class="detail">Abrechnung nach Aufwand</div>
+                </div>
+
+                <button type="submit" id="submitBtn" class="submit-btn">
+                    Angebot anfordern
+                </button>
+
+                <p class="footer-text">
+                    Mit dem Absenden erhalten Sie unverbindlich ein personalisiertes Angebot.
+                </p>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <h3>QM-Guru | Audit-Vorbereitung</h3>
+            <p>📞 <a href="tel:091149522541">0911-49522541</a> | ✉️ <a href="mailto:Holger.grosser@iso9001.info">Holger.grosser@iso9001.info</a></p>
+            <p>© 2025 Alle Rechte vorbehalten</p>
+        </div>
     </div>
-
-    <footer>
-        <p><strong>QM-Guru | Audit-Vorbereitung</strong></p>
-        <p>📞 0911-49522541 | 📧 Holger.grosser@iso9001.info</p>
-        <p>&copy; 2025 Alle Rechte vorbehalten</p>
-    </footer>
 
     <script>
         // ⚠️ WICHTIG: Ersetze diese URL mit deiner Google Apps Script Web App URL!
-        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzunCZPskUzYOygwDVMFjW40qtWeBHhNqm-DkNus-DFNQBE5BIIFYuT1Htb--s6XHU-/exec';
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJSHszuHo4lZ44TC-m880XgjdkPWqUENGMVlOfCM4wp7pCLbZds0Wit5BdUGX7HObq/exec';
 
         const form = document.getElementById('angebotForm');
         const messageDiv = document.getElementById('message');
@@ -324,14 +422,13 @@
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             // Daten sammeln
             const formData = {
                 unternehmensname: document.getElementById('unternehmensname').value,
                 ansprechpartner: document.getElementById('ansprechpartner').value,
                 email: document.getElementById('email').value,
                 telefon: document.getElementById('telefon').value,
-               
                 projektleiterId: document.getElementById('projektleiterId').value,
                 nachricht: document.getElementById('nachricht').value
             };
@@ -342,12 +439,10 @@
             messageDiv.classList.remove('show', 'success', 'error');
 
             try {
-                // An Google Apps Script senden
-               const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
-    method: 'POST',
-    body: JSON.stringify(formData)
-    // KEIN headers-Objekt! Google Apps Script braucht das nicht
-});
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(formData)
+                });
 
                 const result = await response.json();
 
@@ -356,12 +451,13 @@
                     messageDiv.classList.add('show', 'success');
                     form.reset();
                 } else {
-                    throw new Error(result.message || 'Fehler beim Versand');
+                    throw new Error(result.message || 'Unbekannter Fehler');
                 }
+
             } catch (error) {
+                console.error('Fehler:', error);
                 messageDiv.textContent = '❌ Fehler: ' + error.message;
                 messageDiv.classList.add('show', 'error');
-                console.error('Error:', error);
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Angebot anfordern';
