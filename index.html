@@ -351,13 +351,11 @@
 
             try {
                 // An Google Apps Script senden
-                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(formData),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
+               const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify(formData)
+    // KEIN headers-Objekt! Google Apps Script braucht das nicht
+});
 
                 const result = await response.json();
 
