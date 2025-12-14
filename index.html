@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit-Vorbereitung Angebot - QM-Guru</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1E3A5F 0%, #2C5282 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: rgba(30, 58, 95, 0.95);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #1E3A5F;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            padding: 12px 16px;
+            border: 2px solid #E2E8F0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #F6AD55;
+            box-shadow: 0 0 0 3px rgba(246, 173, 85, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .message {
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .message.success {
+            background: rgba(72, 187, 120, 0.1);
+            color: #22543d;
+            border: 1px solid rgba(72, 187, 120, 0.3);
+        }
+
+        .message.error {
+            background: rgba(229, 62, 62, 0.1);
+            color: #742a2a;
+            border: 1px solid rgba(229, 62, 62, 0.3);
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        button {
+            padding: 14px 32px;
+            background: #F6AD55;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        button:hover:not(:disabled) {
+            background: #ED8936;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(237, 137, 54, 0.3);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-note {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        footer {
+            background: #1E3A5F;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .features {
+            background: white;
+            padding: 60px 20px;
+            margin: 40px 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            color: #1E3A5F;
+            margin-bottom: 40px;
+            font-size: 28px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 20px;
+            background: #F7FAFC;
+            border-radius: 8px;
+            border-left: 4px solid #F6AD55;
+        }
+
+        .feature-card h3 {
+            color: #1E3A5F;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .feature-card p {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                margin: 20px auto;
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📋 Audit-Vorbereitung</h1>
+        <p>Automatisiertes Angebotssystem für ISO 9001</p>
+    </header>
+
+    <section class="features">
+        <h2>Was ist im Angebot?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>📋 Nachweise vorbereiten</h3>
+                <p>Alle Dokumente und Checklisten erstellen</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔍 Internes Audit</h3>
+                <p>Vorbereitung und Durchführung</p>
+            </div>
+            <div class="feature-card">
+                <h3>📄 QM-Handbuch</h3>
+                <p>Optimierung und Anpassung</p>
+            </div>
+            <div class="feature-card">
+                <h3>✔️ Management Review</h3>
+                <p>Vorbereitung der Managementbewertung</p>
+            </div>
+            <div class="feature-card">
+                <h3>🤝 Audit-Support</h3>
+                <p>Unterstützung während des Audits</p>
+            </div>
+            <div class="feature-card">
+                <h3>💬 Beratung</h3>
+                <p>Weitere Aufgaben nach Abstimmung</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 style="color: #1E3A5F; margin-bottom: 30px; text-align: center;">Angebot anfordern</h2>
+        
+        <form id="angebotForm">
+            <div class="form-group">
+                <label for="unternehmensname">Unternehmensname *</label>
+                <input type="text" id="unternehmensname" name="unternehmensname" placeholder="Ihre Firma GmbH" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="ansprechpartner">Ansprechpartner *</label>
+                    <input type="text" id="ansprechpartner" name="ansprechpartner" placeholder="Max Mustermann" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="max@firma.de" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="telefon">Telefon</label>
+                    <input type="tel" id="telefon" name="telefon" placeholder="0911-123456">
+                </div>
+
+                <div class="form-group">
+                    <label for="stunden">Stunden</label>
+                    <select id="stunden" name="stunden">
+                        <option value="6">6 Stunden</option>
+                        <option value="8" selected>8 Stunden</option>
+                        <option value="10">10 Stunden</option>
+                        <option value="12">12 Stunden</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="projektleiterId">Projektleiter (optional)</label>
+                <select id="projektleiterId" name="projektleiterId">
+                    <option value="">-- Wählen --</option>
+                    <option value="nina.schroeder">Nina Schröder</option>
+                    <option value="holger.grosser">Holger Großer</option>
+                    <option value="stephan.schroeder">Stephan Schröder</option>
+                    <option value="nina.benyagoub">Nina Benyagoub</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="nachricht">Besondere Anforderungen</label>
+                <textarea id="nachricht" name="nachricht" placeholder="Hier können Sie spezielle Anforderungen mitteilen..."></textarea>
+            </div>
+
+            <div id="message" class="message"></div>
+
+            <button type="submit" id="submitBtn">Angebot anfordern</button>
+
+            <p class="form-note">
+                Mit dem Absenden erhalten Sie unverbindlich ein personalisiertes Angebot.
+            </p>
+        </form>
+    </div>
+
+    <footer>
+        <p><strong>QM-Guru | Audit-Vorbereitung</strong></p>
+        <p>📞 0911-49522541 | 📧 Holger.grosser@iso9001.info</p>
+        <p>&copy; 2025 Alle Rechte vorbehalten</p>
+    </footer>
+
+    <script>
+        // ⚠️ WICHTIG: Ersetze diese URL mit deiner Google Apps Script Web App URL!
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/d/YOUR_SCRIPT_ID_HERE/usercontent';
+
+        const form = document.getElementById('angebotForm');
+        const messageDiv = document.getElementById('message');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Daten sammeln
+            const formData = {
+                unternehmensname: document.getElementById('unternehmensname').value,
+                ansprechpartner: document.getElementById('ansprechpartner').value,
+                email: document.getElementById('email').value,
+                telefon: document.getElementById('telefon').value,
+                stunden: document.getElementById('stunden').value,
+                projektleiterId: document.getElementById('projektleiterId').value,
+                nachricht: document.getElementById('nachricht').value
+            };
+
+            // Button deaktivieren
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Wird versendet...';
+            messageDiv.classList.remove('show', 'success', 'error');
+
+            try {
+                // An Google Apps Script senden
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    messageDiv.textContent = '✅ ' + result.message;
+                    messageDiv.classList.add('show', 'success');
+                    form.reset();
+                } else {
+                    throw new Error(result.message || 'Fehler beim Versand');
+                }
+            } catch (error) {
+                messageDiv.textContent = '❌ Fehler: ' + error.message;
+                messageDiv.classList.add('show', 'error');
+                console.error('Error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Angebot anfordern';
+            }
+        });
+    </script>
+</body>
+</html>
